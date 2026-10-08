@@ -1,0 +1,4 @@
+node_modules/
+.env
+*.tmp.mjs
+# dist/fivem-mcp.mjs is committed on purpose: plugin installs don't run npm install
