@@ -1,0 +1,82 @@
+{
+  "name": "fivem-mcp",
+  "displayName": "FiveM MCP",
+  "version": "1.2.0",
+  "description": "Let an agent build and test FiveM resources against a local FXServer and running game: RCON, server/client Lua eval, server console + client log, NUI DevTools, game screenshots and an entity inspector. Dev servers only.",
+  "author": {
+    "name": "mosquito1459",
+    "url": "https://github.com/mosquito1459"
+  },
+  "homepage": "https://github.com/mosquito1459/FiveM-MCP",
+  "repository": "https://github.com/mosquito1459/FiveM-MCP",
+  "license": "Apache-2.0",
+  "keywords": [
+    "fivem",
+    "fxserver",
+    "gta5",
+    "nui",
+    "lua",
+    "mcp",
+    "testing"
+  ],
+  "mcpServers": {
+    "fivem": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp-server/dist/fivem-mcp.mjs"
+      ],
+      "env": {
+        "FXSERVER_HOST": "${user_config.fxserver_host}",
+        "FXSERVER_PORT": "${user_config.fxserver_port}",
+        "FXSERVER_RCON_PASSWORD": "${user_config.rcon_password}",
+        "AI_BRIDGE_TOKEN": "${user_config.bridge_token}",
+        "FIVEM_CEF_PORT": "${user_config.cef_port}",
+        "FIVEM_MCP_IMAGES": "${user_config.images}"
+      }
+    }
+  },
+  "userConfig": {
+    "rcon_password": {
+      "type": "string",
+      "title": "RCON password",
+      "description": "Must match `set rcon_password` in your server.cfg.",
+      "required": true,
+      "sensitive": true
+    },
+    "bridge_token": {
+      "type": "string",
+      "title": "ai_dev_bridge token",
+      "description": "Must match `set ai_bridge_token` in your server.cfg (any long random string).",
+      "required": true,
+      "sensitive": true
+    },
+    "fxserver_host": {
+      "type": "string",
+      "title": "FXServer host",
+      "description": "The bridge only accepts localhost, so keep 127.0.0.1 unless you know why not.",
+      "default": "127.0.0.1"
+    },
+    "fxserver_port": {
+      "type": "number",
+      "title": "FXServer port",
+      "description": "endpoint_add_tcp/udp port of the server (RCON uses the same port).",
+      "default": 30120,
+      "min": 1,
+      "max": 65535
+    },
+    "cef_port": {
+      "type": "number",
+      "title": "FiveM CEF DevTools port",
+      "description": "The game client's NUI DevTools port.",
+      "default": 13172,
+      "min": 1,
+      "max": 65535
+    },
+    "images": {
+      "type": "boolean",
+      "title": "Return images",
+      "description": "Turn off if your model or MCP host cannot take image input; tools then return text/JSON only.",
+      "default": true
+    }
+  }
+}

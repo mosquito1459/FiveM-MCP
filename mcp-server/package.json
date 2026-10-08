@@ -1,0 +1,37 @@
+{
+  "name": "fivem-mcp",
+  "version": "1.2.0",
+  "description": "MCP server for building and testing FiveM resources against a local FXServer and game client",
+  "main": "dist/fivem-mcp.mjs",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && esbuild src/index.ts --bundle --minify --platform=node --format=esm --target=node20 --outfile=dist/fivem-mcp.mjs \"--banner:js=import { createRequire as __cr } from 'node:module'; const require = __cr(import.meta.url);\"",
+    "start": "node dist/fivem-mcp.mjs",
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "fivem",
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "testing",
+    "nui",
+    "cef"
+  ],
+  "author": "mosquito1459",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "dotenv": "^16.4.7",
+    "puppeteer-core": "^24.4.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "private": true
+}

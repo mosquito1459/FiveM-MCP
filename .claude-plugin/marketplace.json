@@ -1,0 +1,15 @@
+{
+  "name": "fivem-mcp",
+  "owner": {
+    "name": "mosquito1459",
+    "url": "https://github.com/mosquito1459"
+  },
+  "description": "FiveM development tools for Claude Code: MCP server + dev-loop skill.",
+  "plugins": [
+    {
+      "name": "fivem-mcp",
+      "source": "./",
+      "description": "Build and test FiveM resources against a local FXServer and running game."
+    }
+  ]
+}
